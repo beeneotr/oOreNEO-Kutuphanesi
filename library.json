@@ -1,0 +1,35 @@
+{
+    "name": "kibris",
+    "description": "kibris is a library for kibris kit.",
+    "authors": [
+        {
+            "name": "Samet KALIN",
+            "url": "",
+            "maintainer": true
+        },        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "version": "1.1",
+    "license": "",
+    "homepage": "",
+    "frameworks": "arduino",
+    "headers": "kibris.h",
+    "export": {
+        "exclude": [
+            "docs",
+            "extras"
+        ]
+    },
+    "build": {
+        "srcFilter": [
+            "+<*.c>",
+            "+<*.cpp>",
+            "+<*.h>",
+            "+<platforms/esp/32/*.cpp>"
+        ],
+        "libArchive": false
+    }
+}

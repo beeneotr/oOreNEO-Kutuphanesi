@@ -569,6 +569,7 @@ public:
   static OORENEO& getInstance();
   int analogRead(int channel);
   void begin();
+  void init(); // initilize SPI
 
 };
 

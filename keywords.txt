@@ -32,6 +32,7 @@ kbr_NeoPixel	KEYWORD1
 # Methods and Functions
 #######################################	
 
+init            KEYWORD2
 begin			KEYWORD2
 show			KEYWORD2
 setPin			KEYWORD2

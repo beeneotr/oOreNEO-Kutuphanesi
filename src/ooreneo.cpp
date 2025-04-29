@@ -9,11 +9,13 @@ OORENEO& OORENEO::getInstance()
   return instance;
 }
 
-
+void OORENEO::init(){
+  SPI.begin(18, 19, 23, csPin); // Initialize SPI 
+}
 
 int OORENEO::analogRead(int channel) {
 
-    
+    OORENEO::getInstance().init();
     if (channel != 0 && channel != 1) {
         Serial.println("Please insert a pin number 0 or 1");
         return -1;
@@ -46,8 +48,8 @@ int OORENEO::analogRead(int channel) {
 
 
 int OORENEO::analogRead1(int sayi) {
-  Serial.print(":");
-  
+
+  OORENEO::getInstance().init();
   pinMode(csPin, OUTPUT);
   // Select the MCP3208 chip by setting the chip select pin low
   digitalWrite(csPin, LOW);
@@ -67,88 +69,8 @@ int OORENEO::analogRead1(int sayi) {
   return result & 0x0FFF;
 }
 
+
 void OORENEO::begin() {
-  
-  kbrlib_ST7735_18x128x160_HWSPI kbr(2, 15, 4);
-
-  kbr_NeoPixel kbrled(Led_no, Led, NEO_GRB + NEO_KHZ800);
-
-  pinMode(33, OUTPUT);
-  pinMode(0, OUTPUT);
-
-  kbrled.begin();
-  kbrled.clear(); 
-  kbrled.setBrightness(150);
-
-  kbr.begin(KBR_FONT_MODE_SOLID);
-  kbr.clearScreen();
-  kbr.setRotate270(); 
-  kbr.setFont(kbr_font_inr21_mr);
-
-  kbr.setColor(0, 255, 255, 255);  // Set color (0,R,G,B)
-  kbr.setColor(1, 0, 0, 0);  // Set color of text background (1,R,G,B)
-  kbr.setPrintPos(35,55);  // Set position (x,y)
-  kbr.print("Hello");  // Print text or value
-
-  kbr.setColor(0, 255, 0, 0);  // Set color (0,R,G,B)
-  kbr.setPrintPos(30,100);  // Set position (x,y)
-  kbr.print("World!");  // Print text or value
-
-  digitalWrite(33, HIGH);
-  digitalWrite(0, HIGH);
-
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(255, 255, 255));
-    kbrled.show();   
-    delay(30);
-  }
-  
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(0, 0, 255));
-    kbrled.show();   
-    delay(30);
-  }
-  
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(0, 255, 0));
-    kbrled.show();   
-    delay(30);
-  } 
-  
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(255, 0, 0));
-    kbrled.show();   
-    delay(30);
-  }
-  
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(0, 255, 255));
-    kbrled.show();   
-    delay(30);
-  }
-  
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(255, 0, 255));
-    kbrled.show();   
-    delay(30);
-  }
-  
-    for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(255, 255, 0));
-    kbrled.show();   
-    delay(30);
-  }
-
-  for(int i=0; i<=8; i++){
-    kbrled.setPixelColor(i, kbrled.Color(0, 0, 0));
-    kbrled.show();   
-    delay(30);
-  }
-  
-  digitalWrite(33, LOW);
-  digitalWrite(0, LOW);
-
-  kbr.clearScreen();
   
   for (int i = 0; i<5; i++)
   {

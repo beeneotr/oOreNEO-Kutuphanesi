@@ -1,9 +1,9 @@
 {
-    "name": "kibris",
-    "description": "kibris is a library for kibris kit.",
+    "name": "oOreNEO",
+    "description": "It's a library for oOreNEO Kit",
     "authors": [
         {
-            "name": "Samet KALIN",
+            "name": "Hairu MOSSA",
             "url": "",
             "maintainer": true
         },        }
@@ -16,7 +16,7 @@
     "license": "",
     "homepage": "",
     "frameworks": "arduino",
-    "headers": "kibris.h",
+    "headers": "ooreneo.h",
     "export": {
         "exclude": [
             "docs",
